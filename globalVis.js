@@ -11,45 +11,38 @@ $('#toDate').datetimepicker({
    format: 'y-m-d H:i:s'
 });
 
-
 var markers = [];
 var mapMarkers = [];
 var mapCircle = [];
-var request, requestRect, map, map2, upp, northEast, southWest, heatmap;
+var request, requestRect, map, heatmap;
 var northEastLat, northEastLon, southWestLat, southWestLon;                  
 var rectangle = null;
 var dataReply;
 
 function initMap() {
     //Map borders
-    var upp = {lat: 59.862208, lng: 17.637198};
-    var northW = {lat: 59.86496784, lng: 17.619806};
-    var northE = {lat: 59.86496784, lng: 17.6555931124};
-    var southW = {lat: 59.85688300, lng: 17.619806};
-    var southE = {lat: 59.85688300, lng: 17.6555931124};
-
+    var cent = {lat: 59.860807242880206, lng: 17.63833522796631};
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: upp
+        center: cent
     });
+    
+    var borderCorners = [
+        {lat: 59.86496784, lng: 17.619806},
+        {lat: 59.86496784, lng: 17.6555931124},
+        {lat: 59.85688300, lng: 17.6555931124},
+        {lat: 59.85688300, lng: 17.619806},
+        {lat: 59.86496784, lng: 17.619806}
+    ];
 
-    //Temp markers at the borders
-    var northWest = new google.maps.Marker({
-        position: northW,
-        map: map
+    var border = new google.maps.Polyline({
+        path: borderCorners,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
     });
-    var northEast = new google.maps.Marker({
-        position: northE,
-        map: map
-    });
-    var southWest = new google.maps.Marker({
-        position: southW,
-        map: map
-    });
-    var southEast = new google.maps.Marker({
-        position: southE,
-        map: map
-    });
+    border.setMap(map);
 
     //If point region, put circles on click
     if(document.getElementById('regType').value == "pointRegion"){
