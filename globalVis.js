@@ -241,7 +241,6 @@ function getPointReg() {
         url: 'http://data.greeniot.it.uu.se/4dialog/',
 		data: JSON.stringify(request),
         dataType: 'json',
-        contentType: 'application/json',
         type: 'POST',
         success: function (data, status, xhr) {
             alert('Success!');
@@ -265,7 +264,6 @@ function getRectReg() {
         url: 'http://data.greeniot.it.uu.se/4dialog/',
 		data: JSON.stringify(requestRect),
         dataType: 'json',
-        contentType: 'application/json',
         type: 'POST',
         success: function (data, status, xhr) {
             alert('Success!');
