@@ -288,7 +288,7 @@ function drawRectVisualization(dataReply) {
     var heatMapData = [];
 
     for(index in dataReply) {
-        heatMapData.push({location: new google.maps.LatLng(dataReply[index]['Position']['Latitude'], dataReply[index]['Position']['Longitude']), weight: getMean(dataReply[index]['Data'])*5});
+        heatMapData.push({location: new google.maps.LatLng(dataReply[index]['Position']['Latitude'], dataReply[index]['Position']['Longitude']), weight: math.mean(dataReply[index]['Data'])*5});
     }
 
     console.log(heatMapData);
