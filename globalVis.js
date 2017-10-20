@@ -11,6 +11,7 @@ $('#toDate').datetimepicker({
    format: 'y-m-d H:i:s'
 });
 
+
 var markers = [];
 var mapMarkers = [];
 var mapCircle = [];
@@ -21,28 +22,29 @@ var dataReply;
 
 function initMap() {
     //Map borders
-    var cent = {lat: 59.860807242880206, lng: 17.63833522796631};
+   var cent = {lat: 59.860807242880206, lng: 17.63833522796631};
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: cent
     });
-    
-    var borderCorners = [
-        {lat: 59.86496784, lng: 17.619806},
-        {lat: 59.86496784, lng: 17.6555931124},
-        {lat: 59.85688300, lng: 17.6555931124},
-        {lat: 59.85688300, lng: 17.619806},
-        {lat: 59.86496784, lng: 17.619806}
-    ];
 
-    var border = new google.maps.Polyline({
-        path: borderCorners,
-        geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
-    border.setMap(map);
+    var borderCorners = [
+         {lat: 59.86496784, lng: 17.619806},
+         {lat: 59.86496784, lng: 17.6555931124},
+         {lat: 59.85688300, lng: 17.6555931124},
+         {lat: 59.85688300, lng: 17.619806},
+         {lat: 59.86496784, lng: 17.619806}
+     ];
+ 
+     var border = new google.maps.Polyline({
+         path: borderCorners,
+         geodesic: true,
+         strokeColor: '#FF0000',
+         strokeOpacity: 1.0,
+         strokeWeight: 2
+      });
+     border.setMap(map);
 
     //If point region, put circles on click
     if(document.getElementById('regType').value == "pointRegion"){
@@ -190,30 +192,6 @@ function formRequestRect() {
 }
 
 
-////////////STATISTICAL FUNCTIONS/////////////////////
-
-function getMean(arr){
-    var total = 0;
-
-    if (arr.length > 1) {
-        for (var i = 0; i < arr.length; i++) {
-            total += arr[i];        
-        }
-        return total/arr.length;
-    }
-    return arr[0];   
-}
-
-function normalizeValues(arr){
-    ratio = Math.max.apply(Math, arr) / 100;
-
-    for (var i = 0; i < arr.length; i++) {
-        arr[i] = Math.round(arr[i] / ratio);
-    }
-}
-
-/////////////////////////////////////////////////////////
-
 
 //Remove markers and rectangles from the map
 function deleteMarkers() {
@@ -234,9 +212,6 @@ function deleteMarkers() {
 
 //AJAX request for point region
 function getPointReg() {
-
-    var operation = document.getElementById('operation').value;
-
     $.ajax({
         url: 'http://data.greeniot.it.uu.se/4dialog/',
 		data: JSON.stringify(request),
@@ -246,11 +221,7 @@ function getPointReg() {
             alert('Success!');
             dataReply = data['Replies'];
             console.log(dataReply);
-
-            //else call graph function to draw cNone results, append to chart div
-            if(operation !== 'cNone')
-                drawVisualization(dataReply);
-            console.log('wat');
+            drawVisualization(dataReply);
         },
         error: function (xhr, status, error) {
             alert('Update Error occurred - ' + error);
@@ -329,16 +300,6 @@ function drawRectVisualization(dataReply) {
     heatmap.set('radius', 50)
     heatmap.setMap(map);
 }
-
-
-////CHART FUNCTION
-function drawCharts(dataReply){
-    for(data in dataReply[index]['Data']){
-        
-    }
-}
-
-
 
 
 //Handle buttons
