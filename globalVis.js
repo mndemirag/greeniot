@@ -316,6 +316,6 @@ $("#refresh").click(function() {
     document.getElementById('toDate').value = "";
     deleteMarkers();
 
-    if (heatmap == 'undefined')
+    if (heatmap)
         heatmap.setMap(null);
 });
