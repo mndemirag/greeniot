@@ -1,0 +1,98 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #fafafa;
+}
+
+.container-fluid {
+	padding: 0;
+}
+
+.column {
+	margin-top: 30px;
+}
+
+.header {
+	background-color: #8BC34A;
+	height: 60px;
+	width: 100%;
+	padding-left: 25px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.header h1 {
+	font-size: 25px;
+}
+
+.nav {
+	padding-left: 15px;
+}
+
+.nav-tabs {
+	background-color: #8BC34A;
+	border: none;
+	color: white;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	background-color: #8BC34A;
+	color: white;
+	border: none;
+	border-bottom: 3px purple solid;
+	font-weight: bold;
+}
+
+.nav-tabs>li>a {
+	color: #eee;
+	border: none;
+}
+
+.nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
+	background-color: #9CCC65;
+	border-radius: 0;
+	border: none;
+}
+
+.card {
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+#map {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.button-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+    background-color: #8BC34A;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.button:hover, .button:focus, .button:active {
+	background-color: #9CCC65;
+	border-color: #8BC34A;
+	outline: none;
+}

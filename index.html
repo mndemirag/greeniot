@@ -14,10 +14,12 @@
     </style>
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="assets/css/jquery.datetimepicker.css" rel="stylesheet" />
+	<link href="assets/css/custom.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container" style="margin-top:40px;">
+    <div class="container-fluid">
+    	<header class="header"><h1>Green IoT</h1></header>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#pointRegion">Visualization</a></li>
             <li><a data-toggle="tab" href="#rectRegion">Other</a></li>
@@ -26,104 +28,97 @@
     <div class="tab-content">
         <div id="pointRegion" class="tab-pane fade in active">			
             <div class="row">
-                <div class="col-md-12">
-                <br>						
+                <div class="col-md-4 column">						
 					<form id="params" class="form-horizontal" role="form" method="post">
-						<div class="col-md-6">
-							<fieldset style="margin-bottom: 20px;">
+						<div class="col-md-12">
+							<div class="card">
 								<legend>Region Type</legend>
 								<div class="form-group">                  
 			                        <div class="col-sm-12">                            
 										<select class="form-control" id="regType" name="regType" onChange="initMap();">
-			                                        <option value="pointRegion" selected>Point Region</option>
-			                                        <option value="rectRegion">Rectangular Region</option>
+			                                <option value="pointRegion" selected>Point Region</option>
+			                                <option value="rectRegion">Rectangular Region</option>
 			                            </select>
 			                        </div>
 		                    	</div>
-							</fieldset>
+							</div>
 
-		                    <fieldset style="margin-bottom: 20px;">
-								<legend>Date:</legend>
+		                    <div class="card">
+								<legend>Date</legend>
 			                    <div class="form-group">				
-			                        <label for="fromDate" class="col-sm-1 control-label">From:</label>
+			                        
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="fromDate" name="from" required>
+										<label for="fromDate" class="control-label">From</label>
+										<input type="text" class="form-control" id="fromDate" name="from">
 									</div>
 									
-									<label for="toDate" class="col-sm-1 control-label">To:</label>
 									<div class="col-sm-5">
-										<input type="text" class="form-control" id="toDate" name="to" required>
+										<label for="toDate" class="control-label">To</label>
+										<input type="text" class="form-control" id="toDate" name="to">
 									</div>
 			                    </div>
-							</fieldset>
-
-							<fieldset style="margin-bottom: 20px;">
-									<legend>Data Type:</legend>
-							<div class="form-group">                  
-		                        <div class="col-sm-12">                            
-									<select class="form-control" id="dataType" name="dataType">
-		                                        <option value="NO">NO</option>
-		                                        <option value="NO2" selected>NO2</option>
-		                            </select>
-		                        </div>
-		                    </div>
-							</fieldset>	                    
-						</div>
-
-							<div class="col-md-5 col-md-offset-1">
-								<fieldset>
-		                            <legend>Statistics</legend>
-				                    <div class="form-group">
-				                        
-				                        <div class="col-sm-12" style="margin-bottom: 20px;">   
-				                        <label>Operation</label>                         
-				                            <select class="form-control" id="operation" name="operation">
-				                                        <option value="cNone" selected>None</option>
-				                                        <option value="cMean">Mean</option>
-				                                        <option value="cStdDev">Standard Deviation</option>
-				                                        <option value="cMax">Maximum</option>
-				                                        <option value="cMin">Minimum</option>
-				                            </select>
-				                        </div>
-
-				                        <div class="col-sm-12">   
-				                        <label>Interval</label>                         
-				                            <select class="form-control" id="interval" name="interval">
-				                                        <option value="cTenMinutes" selected>Ten Minutes</option>
-				                                        <option value="cHour">Hour</option>
-				                                        <option value="cDayOfWeek">Day of the Week</option>
-				                                        <option value="cWeek">Week</option>
-				                                        <option value="cMonth">Month</option>
-				                                        <option value="cYear">Year</option>
-				                            </select>
-				                        </div>
-
-				                        <div class="col-sm-12" style="height: 150px;">
-											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-10">
-													<button type="button" id="submit" class="btn btn-danger col-sm-4" style=" margin-top: 15%;">Submit</button>		
-													<button type="button" id="refresh" class="btn btn-danger col-sm-4" style="margin-left:50px; margin-top: 15%;">Refresh</button>							
-												</div>
-											</div>
-										</div>
-				                    </div>
-		                    	</fieldset>		
 							</div>
-							
-							<div class="col-md-12">
-							<fieldset>
-							<legend>Map</legend>
-							<div id="map" style="position: absolute; width: 100%; height: 500px; margin-bottom: 100px;"></div>	
-							</fieldset>
-		           			
-		           			</div>	           				
+
+							<div class="card">
+								<legend>Data Type</legend>
+								<div class="form-group">                  
+			                        <div class="col-sm-12">                            
+										<select class="form-control" id="dataType" name="dataType">
+	                                        <option value="NO">NO</option>
+	                                        <option value="NO2" selected>NO2</option>
+			                            </select>
+			                        </div>
+			                    </div>
+							</div>	                    
+						
+
+							<div class="card">
+	                            <legend>Statistics</legend>
+			                    <div class="form-group">
+			                        
+			                        <div class="col-sm-12" style="margin-bottom: 20px;">   
+			                        	<label>Operation</label>                         
+			                            <select class="form-control" id="operation" name="operation">
+	                                        <option value="cNone" selected>None</option>
+	                                        <option value="cMean">Mean</option>
+	                                        <option value="cStdDev">Standard Deviation</option>
+	                                        <option value="cMax">Maximum</option>
+	                                        <option value="cMin">Minimum</option>
+			                            </select>
+			                        </div>
+
+			                        <div class="col-sm-12">   
+			                        	<label>Interval</label>                         
+			                            <select class="form-control" id="interval" name="interval">
+	                                        <option value="cTenMinutes" selected>Ten Minutes</option>
+	                                        <option value="cHour">Hour</option>
+	                                        <option value="cDayOfWeek">Day of the Week</option>
+	                                        <option value="cWeek">Week</option>
+	                                        <option value="cMonth">Month</option>
+	                                        <option value="cYear">Year</option>
+			                            </select>
+			                        </div>
+			                    </div>
+	                    	</div>	
+
+	                    	<div class="col-sm-12 button-group">
+								<button type="button" class="button" id="submit">Submit</button>		
+								<button type="button" class="button" id="refresh">Refresh</button>							
+							</div>
+
+	                    </div>	          				
 		            </form>             		
-           		</div>     		
+           		</div>
+				<div class="col-md-7 column">
+					<fieldset>
+						<legend>Map</legend>
+						<div id="map" style="position: absolute; width: 100%; height: 800px; margin-bottom: 100px;"></div>	
+					</fieldset>
+       			</div>	     		
      		</div>
    		</div>
 
    		<div id="rectRegion" class="tab-pane fade">
-			<div class="chart"></div>
    		asdsad
    		</div>
 	</div>
