@@ -191,8 +191,6 @@ function formRequestRect() {
     getRectReg(requestRect);
 }
 
-
-
 //Remove markers and rectangles from the map
 function deleteMarkers() {
     for (i in mapMarkers) {
@@ -301,14 +299,40 @@ function drawRectVisualization(dataReply) {
     heatmap.setMap(map);
 }
 
+function inputCheck(){
+    var startDate = document.getElementById('fromDate').value;
+    var endDate = document.getElementById('toDate').value;
+    var region = document.getElementById('regType').value;
+
+    if (startDate === ''){
+        alert('Please enter a start date!');
+        return false;
+    }
+    else if (endDate === ''){
+        alert('Please enter a end date!');
+        return false;
+    }
+    else if (region == 'pointRegion' && mapMarkers.length == 0){
+        alert('Please select points on the map!')
+        return false;
+    }
+    else if (region == 'rectRegion' && rectangle == null){
+        alert('Please draw a rectangular region on the map!');
+        return false;
+    }
+    return true;
+}
+
 
 //Handle buttons
 $("#submit").click(function() {
-	if(document.getElementById('regType').value == "pointRegion")
-    	formRequest(markers);
+    if(inputCheck() === true){
+        if(document.getElementById('regType').value == "pointRegion")
+            formRequest(markers);
 
-    else if(document.getElementById('regType').value == "rectRegion")
-    	formRequestRect();
+        else if(document.getElementById('regType').value == "rectRegion")
+            formRequestRect();
+    }    
 });
 
 $("#refresh").click(function() {
