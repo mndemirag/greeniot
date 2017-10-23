@@ -219,6 +219,7 @@ function getPointReg() {
             alert('Success!');
             dataReply = data['Replies'];
             console.log(dataReply);
+            generateChart();
             drawVisualization(dataReply);
         },
         error: function (xhr, status, error) {
@@ -303,6 +304,9 @@ function inputCheck(){
     var startDate = document.getElementById('fromDate').value;
     var endDate = document.getElementById('toDate').value;
     var region = document.getElementById('regType').value;
+    var dataType = document.getElementById('dataType').value;
+    var operation = document.getElementById('operation').value;
+    var interval = document.getElementById('interval').value;
 
     if (startDate === ''){
         alert('Please enter a start date!');
@@ -310,6 +314,18 @@ function inputCheck(){
     }
     else if (endDate === ''){
         alert('Please enter a end date!');
+        return false;
+    }
+    else if (dataType === 'none'){
+        alert('Please select a data type!');
+        return false;
+    }
+    else if (operation === 'none'){
+        alert('Please select an operation!');
+        return false;
+    }
+    else if (interval === 'none'){
+        alert('Please select an interval!');
         return false;
     }
     else if (region == 'pointRegion' && mapMarkers.length == 0){
@@ -323,6 +339,14 @@ function inputCheck(){
     return true;
 }
 
+function generateChart(){
+    var data = { datasets: []};
+
+    for(index in dataReply) {
+        data['datasets'].push({"data": dataReply[index]["Data"]});    
+    }
+    console.log(data);
+}
 
 //Handle buttons
 $("#submit").click(function() {
@@ -338,6 +362,9 @@ $("#submit").click(function() {
 $("#refresh").click(function() {
     document.getElementById('fromDate').value = "";
     document.getElementById('toDate').value = "";
+    document.getElementById('dataType').value = 'none';
+    document.getElementById('operation').value = 'none';
+    document.getElementById('interval').value = 'none';
     deleteMarkers();
 
     if (heatmap)
