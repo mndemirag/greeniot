@@ -43,13 +43,15 @@ body {
 	background-color: #8BC34A;
 	color: white;
 	border: none;
-	border-bottom: 3px purple solid;
+	border-bottom: 3px #33691E solid;
 	font-weight: bold;
 }
 
 .nav-tabs>li>a {
 	color: #eee;
 	border: none;
+	font-size: 18px;
+	text-transform: uppercase;
 }
 
 .nav-tabs>li>a:hover, .nav-tabs>li>a:focus {
@@ -84,7 +86,8 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+	font-size: 16px;
+	font-weight: bold;
     margin: 20px 20px;
     cursor: pointer;
     text-transform: uppercase;
