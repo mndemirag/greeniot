@@ -29,22 +29,22 @@ function initMap() {
         center: cent
     });
 
-    var borderCorners = [
-         {lat: 59.86496784, lng: 17.619806},
-         {lat: 59.86496784, lng: 17.6555931124},
-         {lat: 59.85688300, lng: 17.6555931124},
-         {lat: 59.85688300, lng: 17.619806},
-         {lat: 59.86496784, lng: 17.619806}
-     ];
+    // var borderCorners = [
+    //      {lat: 59.86496784, lng: 17.619806},
+    //      {lat: 59.86496784, lng: 17.6555931124},
+    //      {lat: 59.85688300, lng: 17.6555931124},
+    //      {lat: 59.85688300, lng: 17.619806},
+    //      {lat: 59.86496784, lng: 17.619806}
+    //  ];
  
-     var border = new google.maps.Polyline({
-         path: borderCorners,
-         geodesic: true,
-         strokeColor: '#FF0000',
-         strokeOpacity: 1.0,
-         strokeWeight: 2
-      });
-     border.setMap(map);
+    //  var border = new google.maps.Polyline({
+    //      path: borderCorners,
+    //      geodesic: true,
+    //      strokeColor: '#FF0000',
+    //      strokeOpacity: 1.0,
+    //      strokeWeight: 2
+    //   });
+    //  border.setMap(map);
 
     //If point region, put circles on click
     if(document.getElementById('regType').value == "pointRegion"){
